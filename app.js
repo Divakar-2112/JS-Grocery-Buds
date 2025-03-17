@@ -5,7 +5,7 @@ let submitBtn = document.querySelector("#submit-btn");
 let groceryList = document.querySelector("#grocery-list");
 let clearBtn = document.querySelector("#clear-btn");
 
-let editMode = false;
+let editType = false;
 let editID = null;
 
 document.addEventListener("DOMContentLoaded", loadItems);
@@ -25,7 +25,7 @@ form.addEventListener("submit", function (e) {
     return;
   }
 
-  if (editMode) {
+  if (editType) {
     updateItem(editID, itemName);
   } else {
     addItem(itemName);
@@ -33,7 +33,7 @@ form.addEventListener("submit", function (e) {
 
   groceryInput.value = "";
   submitBtn.textContent = "Submit";
-  editMode = false;
+  editType = false;
   editID = null;
 });
 
@@ -98,7 +98,7 @@ function deleteItem(id, element) {
 function editItem(id, name) {
   groceryInput.value = name;
   submitBtn.textContent = "Edit";
-  editMode = true;
+  editType = true;
   editID = id;
 }
 
